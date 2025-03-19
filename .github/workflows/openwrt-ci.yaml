@@ -83,11 +83,10 @@ jobs:
         cat feeds/packages/utils/xfsprogs/Makefile
         sed -i 's/TARGET_CFLAGS += -DHAVE_MAP_SYNC/TARGET_CFLAGS += -DHAVE_MAP_SYNC -D_LARGEFILE64_SOURCE/' feeds/packages/utils/xfsprogs/Makefile
         ./scripts/feeds update -a
-
-    - name: Install feeds
-      run: |
-        cd openwrt
         ./scripts/feeds install -a
+
+    - name: Generate configuration file
+      run: make defconfig
 
     - name: Load custom configuration
       run: |
@@ -97,9 +96,7 @@ jobs:
     - name: Download package
       run: |
         cd openwrt
-        make defconfig
         make download -j8
-        find dl -size -1024c -exec rm -f {} \;
 
     - name: Compile the firmware
       run: |
@@ -114,8 +111,6 @@ jobs:
         du -h --max-depth=1 ./ --exclude=build_dir --exclude=bin
         du -h --max-depth=1 ./build_dir
         du -h --max-depth=1 ./bin
-        rm -rf ./build_dir
-        echo "status=success" >> $GITHUB_OUTPUT
 
     - name: Prepare artifact
       run: |
