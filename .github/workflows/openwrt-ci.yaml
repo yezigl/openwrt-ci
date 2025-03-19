@@ -86,7 +86,9 @@ jobs:
         ./scripts/feeds install -a
 
     - name: Generate configuration file
-      run: make defconfig
+      run: |
+        cd openwrt
+        make defconfig
 
     - name: Load custom configuration
       run: |
