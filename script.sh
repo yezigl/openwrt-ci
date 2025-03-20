@@ -20,7 +20,7 @@ cd openwrt
 #mv -f package-temp/luci-app-amlogic/luci-app-amlogic package/lean/
 #rm -rf package-temp
 
-# 设置默认IP为 192.168.100.100
-sed -i 's/192.168.1.1/192.168.100.100/g' package/base-files/files/bin/config_generate
+# 设置默认IP为 192.168.50.2
+sed -i 's/192.168.1.1/192.168.50.2/g' package/base-files/files/bin/config_generate
 
 echo "script done"
