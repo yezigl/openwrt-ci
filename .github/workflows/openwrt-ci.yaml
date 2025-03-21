@@ -75,7 +75,6 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         chmod +x $SCRIPT_SH
-        ./$SCRIPT_SH
         cd openwrt
         echo "src-git helloworld https://github.com/fw876/helloworld.git" >> "feeds.conf.default"
         ./scripts/feeds update -a
@@ -83,6 +82,7 @@ jobs:
         sed -i 's/TARGET_CFLAGS += -DHAVE_MAP_SYNC/TARGET_CFLAGS += -DHAVE_MAP_SYNC -D_LARGEFILE64_SOURCE/' feeds/packages/utils/xfsprogs/Makefile
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+        sh -x $SCRIPT_SH
 
     - name: Generate configuration file
       run: |
