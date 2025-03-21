@@ -23,8 +23,6 @@ CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_PDNSD=y
 # CONFIG_PACKAGE_luci-app-wol is not set
 CONFIG_PACKAGE_luci-i18n-adguardhome-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-mosdns-zh-cn=y
-CONFIG_PACKAGE_luci-theme-material=y
-CONFIG_PACKAGE_luci-theme-openwrt-2020=y
 CONFIG_PACKAGE_v2ray-geoip=y
 CONFIG_PACKAGE_v2ray-geosite=y
 CONFIG_PACKAGE_v2dat=y
