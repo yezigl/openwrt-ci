@@ -84,6 +84,8 @@ jobs:
         ./scripts/feeds install -a
         cd ..
         sh -x $SCRIPT_SH
+        cd openwrt
+        grep '192.168' package/base-files/files/bin/config_generate
 
     - name: Generate configuration file
       run: |
